@@ -1,2 +1,3 @@
 # DetVer
-Version detection
+
+Basic version detection. Limited to Windows for now...
