@@ -5,6 +5,7 @@ If you want this to run on WinNT 3.10, make sure you are not linking to msvcrt.d
 */
 
 #include <Windows.h>
+#include <commctrl.h>
 #include <Lm.h>
 #include <stdarg.h>
 #if _MSC_VER-0 > 1
@@ -140,7 +141,7 @@ EXTERN_C void __cdecl mainCRTStartup()
 
 
 	// *** Detect the real Windows version ***
-	FARPROC at_least_winxp = GetSysProcAddr("KERNEL32", "AddRefActCtx");
+	FARPROC at_least_winxp = ovi.dwMajorVersion > 5 || GetSysProcAddr("KERNEL32", "AddRefActCtx");
 	if (!at_least_winxp)
 	{
 		ovi.dwBuildNumber &= 0xffff; // Mask away junk from Win9x
