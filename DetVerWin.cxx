@@ -141,7 +141,7 @@ EXTERN_C void __cdecl mainCRTStartup()
 
 
 	// *** Detect the real Windows version ***
-	FARPROC at_least_winxp = ovi.dwMajorVersion > 5 || GetSysProcAddr("KERNEL32", "AddRefActCtx");
+	BOOL at_least_winxp = ovi.dwMajorVersion > 5 || GetSysProcAddr("KERNEL32", "AddRefActCtx");
 	if (!at_least_winxp)
 	{
 		ovi.dwBuildNumber &= 0xffff; // Mask away junk from Win9x
