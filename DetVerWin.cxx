@@ -192,6 +192,7 @@ EXTERN_C void __cdecl mainCRTStartup()
 	if (winver == 0x603) osstr = ovi.wProductType <= VER_NT_WORKSTATION ? ("8.1") : ("2012 R2");
 	if (winver == 0x604) osstr = ("10 Preview");
 	if (winver == 0xa00) osstr = ("10");
+	if (winver >= 0x604 && GetSysProcAddr("DNSAPI", "DnsGetApplicationSettings")) osstr = ("11");
 
 	if (is_reactos || is_wine) PrintF("%s emulating ", is_reactos ? "ReactOS" : "Wine");
 	PrintF("Windows %s", osstr);
